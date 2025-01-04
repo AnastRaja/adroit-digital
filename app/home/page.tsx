@@ -18,20 +18,20 @@ export const metadata: Metadata = {
     'Next.js App'
   ],
   authors: [
-    { name: 'John Doe', url: 'https://nexara.io/team/john' },
-    { name: 'Jane Smith', url: 'https://nexara.io/team/jane' },
+    { name: 'John Doe', url: 'https://adroitsdigital.com/team/john' },
+    { name: 'Jane Smith', url: 'https://adroitsdigital.com/team/jane' },
   ],
   creator: 'Nexara Innovations',
   publisher: 'Nexara Media',
-  metadataBase: new URL('https://nexara.io'),
+  metadataBase: new URL('https://adroitsdigital.com'),
   openGraph: {
     title: 'Nexara Innovations - Leading the Future',
     description: 'Explore cutting-edge AI and blockchain solutions from Nexara Innovations.',
-    url: 'https://nexara.io',
+    url: 'https://adroitsdigital.com',
     siteName: 'Nexara Innovations',
     images: [
       {
-        url: 'https://nexara.io/assets/og-image.jpg',
+        url: 'https://adroitsdigital.com/assets/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Nexara Innovations Logo',
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     creator: '@johndoe',
     title: 'Nexara Innovations',
     description: 'Innovating with AI and Blockchain to shape the future.',
-    images: ['https://nexara.io/assets/twitter-card.jpg'],
+    images: ['https://adroitsdigital.com/assets/twitter-card.jpg'],
   },
   icons: {
     icon: '/favicon.ico',
@@ -54,13 +54,7 @@ export const metadata: Metadata = {
     apple: '/apple-touch-icon.png',
   },
   manifest: '/site.webmanifest',
-  alternates: {
-    canonical: 'https://nexara.io',
-    languages: {
-      'en-US': 'https://nexara.io',
-      'fr-FR': 'https://nexara.io/fr',
-    },
-  },
+  
   robots: {
     index: true,
     follow: true,
