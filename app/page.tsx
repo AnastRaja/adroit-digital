@@ -27,8 +27,8 @@ export default function IndexPage() {
             From Web3 innovation to captivating designs, we create digital
             experiences that matter. Adroits Digital specializes in transforming
             ideas into reality with services in Web3, blockchain, AI, marketing,
-            and development that power your business's journey to success and
-            growth.
+            and development that power your business&apos;s journey to success
+            and growth.
           </p>
           <div className="flex gap-4 mt-8">
             <Link
@@ -72,10 +72,10 @@ export default function IndexPage() {
             Welcome to Adroits Digital, your trusted partner in digital
             innovation. We are a team of passionate professionals dedicated to
             delivering cutting-edge solutions that empower businesses to thrive
-            in the ever-evolving digital landscape. Whether you're a startup
-            looking to establish your presence or an established brand aiming to
-            expand, we are here to help you achieve your goals with tailored
-            strategies and unmatched expertise.
+            in the ever-evolving digital landscape. Whether you&apos;re a
+            startup looking to establish your presence or an established brand
+            aiming to expand, we are here to help you achieve your goals with
+            tailored strategies and unmatched expertise.
           </p>
           <div className="mt-3">
             <Link
@@ -138,7 +138,7 @@ export default function IndexPage() {
             <p className="group-hover:text-white">
               Create stunning, user-friendly websites that engage your audience
               and drive conversions. From sleek designs to robust functionality,
-              we've got you covered.
+              we&apos;ve got you covered.
             </p>
           </div>
           <div className="group bg-slate-100 hover:bg-primary text-gray-800 p-6 cursor-pointer">
@@ -177,7 +177,7 @@ export default function IndexPage() {
               Digital Marketing Services
             </h3>
             <p className="group-hover:text-white">
-              Amplify your brand's reach with data-driven digital marketing
+              Amplify your brand&apos;s reach with data-driven digital marketing
               strategies. From SEO to social media marketing, we help you
               connect with your audience where it matters most.
             </p>
