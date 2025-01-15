@@ -20,7 +20,7 @@ import {
 
 export function SiteHeader() {
   return (
-    <header className="bg-background sticky top-0 z-40 w-full border-b">
+    <header className="bg-white sticky top-0 z-40 w-full border-b border-gray-200">
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
         <MainNav items={siteConfig.mainNav} />
         <div className="flex flex-1 items-center justify-end space-x-4">
@@ -82,6 +82,14 @@ export function SiteHeader() {
     </DrawerFooter>
   </DrawerContent>
 </Drawer>
+<Link
+          href=""
+          target="_blank"
+          rel="noreferrer"
+          className={buttonVariants()}
+        >
+          Get Quote Now
+        </Link>
 
            
           </nav>

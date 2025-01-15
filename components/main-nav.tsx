@@ -5,6 +5,7 @@ import { NavItem } from "@/types/nav"
 import { siteConfig } from "@/config/site"
 import { cn } from "@/lib/utils"
 import { Icons } from "@/components/icons"
+import { NavigationMenuDemo } from '@/components/NavigationMenuDemo'
 import logo from "@/asset/Dark_logo.png"
 interface MainNavProps {
   items?: NavItem[]
@@ -16,7 +17,11 @@ export function MainNav({ items }: MainNavProps) {
       <Link href="/" className="flex items-center space-x-2">
         <Image src={logo} alt="logo" width={120} height={70} />
       </Link>
-      {items?.length ? (
+
+      <div>
+        <NavigationMenuDemo/>
+      </div>
+      {/* {items?.length ? (
         <nav className="flex gap-6">
           {items?.map(
             (item, index) =>
@@ -34,7 +39,7 @@ export function MainNav({ items }: MainNavProps) {
               )
           )}
         </nav>
-      ) : null}
+      ) : null} */}
     </div>
   )
 }
