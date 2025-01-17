@@ -39,7 +39,7 @@ export default function Footer() {
 
         {/* Right Section */}
         <div className="space-y-4 text-center md:text-right">
-          <h2 className="text-xl font-semibold text-gray-800">
+          <h2 className="text-xl font-light text-gray-800">
             Want to dominate the digital game? Adroits Digital crafts powerful
             marketing strategies to launch you to the top. Let&apos;s chat and
             unlock your brand&apos;s potential! Don&apos;t forget to follow us.
@@ -71,10 +71,9 @@ export default function Footer() {
             href="https://www.facebook.com/adroitsdigital/"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-gray-100 text-sm rounded-lg flex items-center space-x-2 hover:bg-gray-200"
+            className="w-10 h-10 flex justify-center items-center border border-gray-300 rounded-full bg-primary text-white hover:bg-primary hover:text-white"
           >
-            <FaFacebook className="text-blue-600 w-5 h-5" />
-            <span>Facebook</span>
+            <FaFacebook className="w-5 h-5" />
           </Link>
 
           {/* Twitter */}
@@ -82,10 +81,9 @@ export default function Footer() {
             href="https://twitter.com/AdroitsDigital"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-gray-100 text-sm rounded-lg flex items-center space-x-2 hover:bg-gray-200"
+            className="w-10 h-10 flex justify-center items-center border border-gray-300 rounded-full bg-primary text-white hover:bg-primary hover:text-white"
           >
-            <FaXTwitter className="text-blue-400 w-5 h-5" />
-            <span>Twitter</span>
+            <FaXTwitter className="w-5 h-5" />
           </Link>
 
           {/* Instagram */}
@@ -93,10 +91,9 @@ export default function Footer() {
             href="https://www.instagram.com/adroitsdigital/"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-gray-100 text-sm rounded-lg flex items-center space-x-2 hover:bg-gray-200"
+            className="w-10 h-10 flex justify-center items-center border border-gray-300 rounded-full bg-primary text-white hover:bg-primary hover:text-white"
           >
-            <FaInstagram className="text-pink-600 w-5 h-5" />
-            <span>Instagram</span>
+            <FaInstagram className="w-5 h-5" />
           </Link>
 
           {/* LinkedIn */}
@@ -104,10 +101,9 @@ export default function Footer() {
             href="https://www.linkedin.com/company/adroits-digital/about/?viewAsMember=true"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-gray-100 text-sm rounded-lg flex items-center space-x-2 hover:bg-gray-200"
+            className="w-10 h-10 flex justify-center items-center border border-gray-300 rounded-full bg-primary text-white hover:bg-primary hover:text-white"
           >
-            <FaLinkedin className="text-blue-700 w-5 h-5" />
-            <span>LinkedIn</span>
+            <FaLinkedin className="w-5 h-5" />
           </Link>
 
           {/* Pinterest */}
@@ -115,10 +111,9 @@ export default function Footer() {
             href="https://www.pinterest.com/adroitsdigital/"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-gray-100 text-sm rounded-lg flex items-center space-x-2 hover:bg-gray-200"
+            className="w-10 h-10 flex justify-center items-center border border-gray-300 rounded-full bg-primary text-white hover:bg-primary hover:text-white"
           >
-            <FaPinterest className="text-red-600 w-5 h-5" />
-            <span>Pinterest</span>
+            <FaPinterest className="w-5 h-5" />
           </Link>
 
           {/* WhatsApp */}
@@ -126,10 +121,9 @@ export default function Footer() {
             href="https://wa.me/7904941113/?text=Hi AdroitsDigital"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-4 py-2 bg-gray-100 text-sm rounded-lg flex items-center space-x-2 hover:bg-gray-200"
+            className="w-10 h-10 flex justify-center items-center border border-gray-300 rounded-full bg-primary text-white hover:bg-primary hover:text-white"
           >
-            <FaWhatsapp className="text-green-500 w-5 h-5" />
-            <span>WhatsApp</span>
+            <FaWhatsapp className="w-5 h-5" />
           </Link>
         </div>
       </div>

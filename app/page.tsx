@@ -5,9 +5,10 @@ import {buttonVariants, Button} from "@/components/ui/button";
 import localFont from "next/font/local";
 import {cn} from "@/lib/utils";
 import Banner from "@/asset/Banner_img.png";
-import Team from "@/asset/our-team.png";
+import Team from "@/asset/team_compress.webp";
 import Image from "next/image";
-import CTAimg from "@/asset/banner_cta.png";
+import CTAimg from "@/asset/getquate.webp";
+import Teamimg from "@/asset/team-img.jpg";
 import {MonitorSmartphone, Bitcoin} from "lucide-react";
 const myFont = localFont({src: "../asset/font/Gasket.ttf"});
 
@@ -55,16 +56,16 @@ export default function IndexPage() {
           </div>
         </div>
       </section>
-      <section className="container grid items-start gap-6   grid-cols-12 pb-14">
+      <section className="container grid items-center gap-6   grid-cols-12 pb-14">
         <div className="flex flex-col items-start gap-2 col-span-6">
-          <div className="relative before:content-[''] before:absolute before:bottom-[-20px] before:h-[80px] before:bg-primary before:w-full">
+          <div className="relative ">
             <Image
               src={Team}
               alt="Banner"
-              layout="responsive"
-              width={100}
+              // layout="responsive"
+              width={400}
               height={70}
-              className="w-full h-auto z-10 relative"
+              className="w-full h-auto z-10 relative rounded-lg"
             />
           </div>
         </div>
@@ -349,8 +350,7 @@ rounded-lg hover:rounded-lg"
       <section
         className="relative h-[500px] bg-fixed bg-center bg-cover bg-no-repeat mt-16"
         style={{
-          backgroundImage:
-            "url('https://images.pexels.com/photos/1595385/pexels-photo-1595385.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
+          backgroundImage: `url(${Teamimg.src})`,
         }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
@@ -465,7 +465,7 @@ rounded-lg hover:rounded-lg"
         </div>
       </section>
       <section
-        className="relative h-[400px] bg-cover bg-center bg-cover bg-no-repeat mt-28"
+        className="relative h-[400px] bg-cover bg-bottom bg-cover bg-no-repeat mt-28"
         style={{
           backgroundImage: `url(${CTAimg.src})`,
         }}
