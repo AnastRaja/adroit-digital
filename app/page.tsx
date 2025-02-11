@@ -16,7 +16,7 @@ export default function IndexPage() {
   return (
     <div>
       <section className="container grid items-center gap-6  h-[calc(100vh-60px)] grid-cols-12">
-        <div className="flex flex-col items-start gap-2 col-span-6">
+        <div className="col-span-6 flex flex-col items-start gap-2">
           <h1
             className={cn(
               "text-8xl md:text-7xl font-extrabold leading-tight tracking-wider",
@@ -465,7 +465,7 @@ rounded-lg hover:rounded-lg"
         </div>
       </section>
       <section
-        className="relative h-[400px] bg-cover bg-bottom bg-cover bg-no-repeat mt-28"
+        className="relative h-[400px] bg-cover bg-center bg-cover bg-no-repeat mt-28"
         style={{
           backgroundImage: `url(${CTAimg.src})`,
         }}
