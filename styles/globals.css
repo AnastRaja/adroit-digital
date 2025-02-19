@@ -126,3 +126,22 @@
   -ms-overflow-style: none; /* Hides scrollbar in IE and Edge */
   scrollbar-width: none; /* Hides scrollbar in Firefox */
 }
+.BG-web3 {
+  background-image: url("../asset/bannerWeb3.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: right;
+  animation: floating-bg 3s ease-in-out infinite;
+}
+
+@keyframes floating-bg {
+  0% {
+    background-position: right 0px;
+  }
+  50% {
+    background-position: right -10px;
+  }
+  100% {
+    background-position: right 0px;
+  }
+}

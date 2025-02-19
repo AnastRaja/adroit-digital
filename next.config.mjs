@@ -12,6 +12,10 @@ const nextConfig = {
         destination: "/SEO", // The actual path of the page file
       },
       {
+        source: "/web3-marketing-agency",
+        destination: "/WEB3", // The actual path of the page file
+      },
+      {
         source: "/sitemap.xml",
         destination: "/sitemap.xml.ts", // The actual path of the sitemap file
       },
