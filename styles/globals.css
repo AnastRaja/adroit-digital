@@ -167,8 +167,42 @@
   }
 
   .BG-web3 {
-    background-position: bottom;
+    background-position: bottom !important;
     background-size: contain; /* Adjust background for smaller screens */
     animation: floating-bg 2s ease-in-out infinite; /* Faster animation for mobile */
   }
+}
+
+.web_blog p {
+  font-size: 18px !important;
+  margin-bottom: 15px;
+}
+
+.web_blog h3,
+.web_blog h2 {
+  font-size: 23px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.headinght_leter {
+  letter-spacing: 2px;
+}
+.description_blob {
+  font-size: 20px;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 15px;
+  margin-bottom: 22px;
+}
+
+.border_blog_card {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+.line_compcontent {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }

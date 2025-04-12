@@ -32,17 +32,17 @@ export default async function BlogDetailPage({
   });
 
   return (
-    <div className="container mx-auto py-10">
-      <Image
-        src={blog.imageUrl}
-        alt={blog.title}
-        width={600}
-        height={500}
-        className="w-full h-[400px] rounded-lg mb-6"
-      />
+    <div className="container mx-auto py-10 pt-2">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-4 p-0">
         <div className="lg:col-span-9 md:col-span-1">
-          <nav className="mb-3 text-sm text-gray-600">
+          <Image
+            src={blog.imageUrl}
+            alt={blog.title}
+            width={600}
+            height={500}
+            className="w-full h-[400px] rounded-lg mb-6"
+          />
+          <nav className="mb-3 text-sm text-gray-600 blog_main_body">
             <ol className="flex items-center space-x-2">
               <li>
                 <Link href="/" className="hover:text-gray-900">
@@ -65,13 +65,15 @@ export default async function BlogDetailPage({
           </nav>
           <h1
             className={cn(
-              "text-6xl font-bold mb-2 leading-[65px]",
+              "text-6xl font-bold mb-2 leading-[65px] headinght_leter",
               myFont.className
             )}
           >
             {blog.title}
           </h1>
-          <p className="text-gray-600 mb-2">{blog.description}</p>
+          <p className="text-gray-600 mb-2 description_blob">
+            {blog.description}
+          </p>
           <div className="flex justify-items-start gap-2 items-center mb-2">
             <p className="text-sm text-black">{blog.category}</p>
             <span className="mx-2">•</span>
@@ -80,12 +82,12 @@ export default async function BlogDetailPage({
           <br className="border" />
           {blog.body && (
             <div
-              className="prose prose-lg prose-gray text-gray-800 mb-6 leading-relaxed max-w-none"
+              className="prose prose-lg prose-gray text-gray-800 mb-6 leading-relaxed max-w-none web_blog"
               dangerouslySetInnerHTML={{__html: blog.body}}
             />
           )}
         </div>
-        <div className="lg:col-span-3 md:col-span-1 p-4 text-white">
+        <div className="lg:col-span-3 md:col-span-1  text-white ">
           <ContactForm />
         </div>
       </div>

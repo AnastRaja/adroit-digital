@@ -24,7 +24,7 @@ const BlogCard: React.FC<BlogCardProps> = ({blog}) => {
 
   return (
     <Link href={`/blog/${blog.slug}`} className="block">
-      <div className="  max-w-xs  transition-shadow">
+      <div className="  max-w-xs  transition-shadow border_blog_card hover:shadow-lg">
         <Image
           src={blog.imageUrl}
           alt={blog.title}
@@ -41,7 +41,7 @@ const BlogCard: React.FC<BlogCardProps> = ({blog}) => {
           >
             {blog.title}
           </h2>
-          <p className="text-gray-600 mb-2 mt-2 leading-[20px]">
+          <p className="text-gray-600 mb-2 mt-2 leading-[20px] line_compcontent">
             {blog.description}
           </p>
           {/* {bodyPreview && <p className="text-gray-700 mb-2">{bodyPreview}</p>} */}

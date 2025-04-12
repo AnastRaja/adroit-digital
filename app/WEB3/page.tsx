@@ -115,23 +115,23 @@ function index() {
     <>
       <div>
         <div className="">
-          <section className="container grid items-center gap-6  h-[calc(100vh-120px)] grid-cols-12 BG-web3">
-            <div className="col-span-6 flex flex-col items-start gap-2">
+          <section className="container grid items-start lg:items-center gap-4 sm:gap-6 min-h-[calc(100vh-60px)] grid-cols-12 py-6 sm:py-0 BG-web3 ">
+            <div className="flex flex-col items-start gap-2 col-span-12 sm:col-span-12 md:col-span-6 lg:col-span-6">
               <h1
                 className={cn(
-                  "text-8xl md:text-7xl font-extrabold leading-tight tracking-wider text-black ",
+                  "text-4xl sm:text-3xl md:text-7xl lg:text-8xl font-extrabold leading-tight tracking-wider lg:text-left text-center w-full",
                   myFont.className
                 )}
               >
                 Web3 Marketing Agency
               </h1>
-              <p className="mt-6 max-w-[700px] text-xl text-black ">
+              <p className="mt-4 sm:mt-6 max-w-[700px] text-base sm:text-lg md:text-xl text-zinc-950 lg:text-left text-center">
                 Adroits Digital - Your Guide to Web3 Marketing Service. We are
                 specialized in the field of Web3 and Blockchain technology. We
                 guide you through each and every step to brand your web3
                 business online.
               </p>
-              <div className="flex gap-4 mt-8">
+              <div className="flex gap-4 mt-6 sm:mt-8 justify-center w-full lg:justify-start">
                 <Link
                   href={siteConfig.links.docs}
                   target="_blank"
@@ -146,8 +146,8 @@ function index() {
         </div>
 
         <div className="bg-gray-100 pt-14">
-          <section className="container grid items-center gap-6   grid-cols-12 pb-14 ">
-            <div className="flex flex-col items-start gap-2 col-span-6">
+          <section className="container grid items-center gap-4 sm:gap-6 grid-cols-12 pb-8 sm:pb-14 ">
+            <div className="flex flex-col items-start gap-2 col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 order-2 sm:order-1">
               <div className="relative mx-auto">
                 <Image
                   src={Banner}
@@ -155,20 +155,20 @@ function index() {
                   // layout="responsive"
                   width={500}
                   height={100}
-                  className=" h-auto z-10 relative rounded-lg mx-auto"
+                  className=" h-auto z-10 relative rounded-lg mx-auto display:block"
                 />
               </div>
             </div>
-            <div className=" flex flex-col items-start gap-2 col-span-6">
+            <div className="flex flex-col items-start gap-2 col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 order-1 sm:order-2">
               <h2
                 className={cn(
-                  "text-6xl md:text-6xl font-extrabold leading-tight tracking-wider",
+                  "text-4xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-wider lg:text-left text-center w-full",
                   myFont.className
                 )}
               >
                 Overview of Web3 Marketing
               </h2>
-              <p className="mt-2 max-w-[700px] text-xl text-zinc-950">
+              <p className="mt-2 max-w-[700px] text-base text-zinc-950 lg:text-left text-center">
                 The digital marketing sector is undergoing a seismic shift. With
                 the evolution of the internet from Web 2.0 to Web 3.0, the realm
                 of marketing is undergoing a significant transformation. Web3
@@ -186,17 +186,17 @@ function index() {
           </section>
         </div>
         <div className="pt-14">
-          <section className="container grid items-center gap-6   grid-cols-12 pb-14 ">
-            <div className=" flex flex-col items-start gap-2 col-span-6">
+          <section className="container grid items-center gap-4 sm:gap-6 grid-cols-12 pb-8 sm:pb-14 ">
+            <div className="flex flex-col items-start gap-2 col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 ">
               <h2
                 className={cn(
-                  "text-6xl md:text-6xl font-extrabold leading-tight tracking-wider",
+                  "text-4xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-wider lg:text-left text-center w-full",
                   myFont.className
                 )}
               >
                 About Adroits Digital
               </h2>
-              <p className="mt-2 max-w-[700px] text-xl text-zinc-950">
+              <p className="mt-2 max-w-[700px] text-base text-zinc-950 lg:text-left text-center">
                 Adroits Digital, A leading web3 marketing agency, we&apos;re at
                 the frontline of this transformative movement, offering
                 top-notch Web3 Marketing Services that propel brands into the
@@ -214,7 +214,7 @@ function index() {
                 digital journey to level up your web3 business.
               </p>
             </div>
-            <div className="flex flex-col items-start gap-2 col-span-6">
+            <div className="flex flex-col items-start gap-2 col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 ">
               <div className="relative mx-auto">
                 <Image
                   src={Banner2}
@@ -233,13 +233,13 @@ function index() {
             <div>
               <h2
                 className={cn(
-                  "text-6xl md:text-6xl font-extrabold leading-tight tracking-wider text-center ",
+                  "text-4xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-wider lg:text-left text-center w-full",
                   myFont.className
                 )}
               >
                 Web3 Marketing Process.
               </h2>
-              <p className="mt-2 max-w-[700px] text-xl text-zinc-950 text-center mx-auto">
+              <p className="mt-2 max-w-[700px] text-base text-zinc-950 text-center mx-auto">
                 Decentralize Your Brand&apos;s Reach with Adroits Digital
               </p>
             </div>
@@ -477,8 +477,8 @@ function index() {
         </section>
 
         <div className=" pt-20">
-          <section className="container grid items-center gap-6   grid-cols-12 ">
-            <div className="flex flex-col items-start gap-2 col-span-6">
+          <section className="container grid items-center gap-4 sm:gap-6 grid-cols-12 pb-8 sm:pb-14 ">
+            <div className="flex flex-col items-start gap-2 col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 order-2 sm:order-1">
               <div className="relative mx-auto">
                 <Image
                   src={why}
@@ -486,20 +486,20 @@ function index() {
                   // layout="responsive"
                   width={600}
                   height={100}
-                  className=" h-auto z-10 relative rounded-lg mx-auto"
+                  className=" h-auto z-10 relative rounded-lg mx-auto display:block"
                 />
               </div>
             </div>
-            <div className=" flex flex-col items-start gap-2 col-span-6">
+            <div className="flex flex-col items-start gap-2 col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 order-1 sm:order-2">
               <h2
                 className={cn(
-                  "text-6xl md:text-6xl font-extrabold leading-tight tracking-wider",
+                  "text-4xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-wider lg:text-left text-center w-full",
                   myFont.className
                 )}
               >
                 Why Choose Adroits Digital for Web3 Marketing?
               </h2>
-              <p className="mt-2 max-w-[700px] text-xl text-zinc-950">
+              <p className="mt-2 max-w-[700px] text-base text-zinc-950">
                 Adroits Digital is the ideal choice for Web3 marketing, offering
                 a blend of expertise in blockchain technology and innovative
                 marketing strategies. Our comprehensive services, adaptability

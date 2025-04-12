@@ -4,11 +4,12 @@ import {Input} from "@/components/ui/input";
 import {Label} from "@/components/ui/label";
 import {Textarea} from "@/components/ui/textarea";
 import {Button} from "@/components/ui/button";
-import {X} from "lucide-react"; // For the close icon
+import {X} from "lucide-react";
 import {useForm} from "react-hook-form";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {z} from "zod";
 import {useState} from "react";
+import {useToast} from "@/hooks/use-toast"; // Corrected import path
 
 // Define the form schema using Zod
 const formSchema = z.object({
@@ -23,11 +24,9 @@ const formSchema = z.object({
   country: z
     .string()
     .min(2, {message: "Country must be at least 2 characters long"}),
-  contactMethod: z
-    .string()
-    .min(2, {
-      message: "Please enter a valid contact method (e.g., WhatsApp ID)",
-    }),
+  contactMethod: z.string().min(2, {
+    message: "Please enter a valid contact method (e.g., WhatsApp ID)",
+  }),
   requirement: z
     .string()
     .min(10, {message: "Requirement must be at least 10 characters long"}),
@@ -37,19 +36,20 @@ const formSchema = z.object({
 type FormData = z.infer<typeof formSchema>;
 
 interface ContactFormProps {
-  onClose?: () => void; // Optional prop to handle closing the form
+  onClose?: () => void;
 }
 
 export default function ContactForm({onClose}: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-
+  const {toast} = useToast(); // Initialize useToast
   // Initialize react-hook-form with Zod validation
   const {
     register,
     handleSubmit,
     formState: {errors},
+    reset, // Add reset for clearing form
   } = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -69,8 +69,11 @@ export default function ContactForm({onClose}: ContactFormProps) {
     setSubmitSuccess(false);
 
     try {
-      // Make API call to submit the form data
-      const response = await fetch("/api/contact", {
+      // console.log("Form data:", data); // Debug: Log form data
+      // Use the backend URL (local for now)
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+
+      const response = await fetch(`${apiUrl}/api/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -84,10 +87,12 @@ export default function ContactForm({onClose}: ContactFormProps) {
 
       const result = await response.json();
       console.log("Form submitted successfully:", result);
+      toast({
+        title: "Success!",
+        description: "Your inquiry has been submitted successfully.",
+      });
       setSubmitSuccess(true);
-
-      // Optionally reset the form after successful submission
-      // reset();
+      reset(); // Reset form after success
     } catch (error) {
       console.error("Error submitting form:", error);
       setSubmitError("Failed to submit the form. Please try again later.");
@@ -97,8 +102,7 @@ export default function ContactForm({onClose}: ContactFormProps) {
   };
 
   return (
-    <div className="relative max-w-md mx-auto p-4 bg-white rounded-lg border border-gray-200">
-      {/* Close Button */}
+    <div className="sticky top-[-10px] max-w-md mx-auto p-4 bg-white rounded-lg border border-gray-200">
       {onClose && (
         <button
           onClick={onClose}
@@ -107,27 +111,20 @@ export default function ContactForm({onClose}: ContactFormProps) {
           <X className="w-5 h-5 text-black" />
         </button>
       )}
-
-      {/* Form Title */}
       <h2 className="text-2xl font-bold text-black mb-6">
         Have a Project Idea? Discuss With Us
       </h2>
-
-      {/* Success/Error Messages */}
-      {submitSuccess && (
+      {/* {submitSuccess && (
         <div className="mb-4 p-3 bg-green-100 text-green-700 rounded">
           Form submitted successfully!
         </div>
-      )}
-      {submitError && (
+      )} */}
+      {/* {submitError && (
         <div className="mb-4 p-3 bg-red-100 text-red-700 rounded">
           {submitError}
         </div>
-      )}
-
-      {/* Form */}
+      )} */}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-        {/* Name Field */}
         <div className="space-y-2">
           <Label htmlFor="name" className="text-gray-600">
             Name
@@ -142,8 +139,6 @@ export default function ContactForm({onClose}: ContactFormProps) {
             <p className="text-red-500 text-sm">{errors.name.message}</p>
           )}
         </div>
-
-        {/* Email Field */}
         <div className="space-y-2">
           <Label htmlFor="email" className="text-gray-600">
             Email
@@ -159,8 +154,6 @@ export default function ContactForm({onClose}: ContactFormProps) {
             <p className="text-red-500 text-sm">{errors.email.message}</p>
           )}
         </div>
-
-        {/* Phone Field */}
         <div className="space-y-2">
           <Label htmlFor="phone" className="text-gray-600">
             Phone
@@ -176,8 +169,6 @@ export default function ContactForm({onClose}: ContactFormProps) {
             <p className="text-red-500 text-sm">{errors.phone.message}</p>
           )}
         </div>
-
-        {/* Country Field */}
         <div className="space-y-2">
           <Label htmlFor="country" className="text-gray-600">
             Country
@@ -192,8 +183,6 @@ export default function ContactForm({onClose}: ContactFormProps) {
             <p className="text-red-500 text-sm">{errors.country.message}</p>
           )}
         </div>
-
-        {/* WhatsApp/Telegram/Skype Field */}
         <div className="space-y-2">
           <Label htmlFor="contactMethod" className="text-gray-600">
             Whatsapp/Telegram/Skype
@@ -210,8 +199,6 @@ export default function ContactForm({onClose}: ContactFormProps) {
             </p>
           )}
         </div>
-
-        {/* Requirement Field */}
         <div className="space-y-2">
           <Label htmlFor="requirement" className="text-gray-600">
             Requirement
@@ -226,8 +213,6 @@ export default function ContactForm({onClose}: ContactFormProps) {
             <p className="text-red-500 text-sm">{errors.requirement.message}</p>
           )}
         </div>
-
-        {/* Submit Button */}
         <Button
           type="submit"
           disabled={isSubmitting}

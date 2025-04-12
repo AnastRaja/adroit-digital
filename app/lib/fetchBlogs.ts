@@ -26,7 +26,7 @@ export async function fetchBlogs(): Promise<Blog[]> {
     }
 
     const blogs: Blog[] = await res.json()
-    console.log("Fetched blogs:", blogs)
+    // console.log("Fetched blogs:", blogs)
 
     return blogs
   } catch (error: any) {

@@ -189,7 +189,7 @@ function index() {
             <div>
               <h2
                 className={cn(
-                  "text-4xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-wider lg:text-left text-center w-full",
+                  "text-4xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-wider lg:text-center text-center w-full",
                   myFont.className
                 )}
               >
