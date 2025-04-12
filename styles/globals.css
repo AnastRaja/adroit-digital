@@ -145,3 +145,30 @@
     background-position: right 0px;
   }
 }
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px; /* Example adjustment for mobile */
+  }
+
+  .SEO_section {
+    background-size: contain; /* Adjust background for smaller screens */
+    background-position: center;
+    background-position: bottom;
+  }
+
+  .sticky-card {
+    margin-bottom: 10px; /* Reduce margin for mobile */
+  }
+
+  .scroll_container {
+    height: 300px; /* Adjust height for mobile */
+    padding: 8px;
+  }
+
+  .BG-web3 {
+    background-position: bottom;
+    background-size: contain; /* Adjust background for smaller screens */
+    animation: floating-bg 2s ease-in-out infinite; /* Faster animation for mobile */
+  }
+}

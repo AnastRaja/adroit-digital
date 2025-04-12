@@ -1,7 +1,7 @@
 import {writeFileSync} from "fs";
 import {globby} from "globby";
 
-const siteUrl = "https://example.com";
+const siteUrl = "https://adroitsdigital.com/";
 const generateUrl = (path) => siteUrl + path;
 const defaultConfig = {
   changefreq: "weekly",
@@ -57,7 +57,14 @@ async function generateSitemap() {
           } else if (path === "/about") {
             priority = "0.9"; // Higher priority for the index blogs page
             changefreq = "daily";
+          } else if (path === "/seo-service-provider") {
+            priority = "0.9"; // Higher priority for the index blogs page
+            changefreq = "daily";
+          } else if (path === "/web3-marketing-agency") {
+            priority = "0.9"; // Higher priority for the index blogs page
+            changefreq = "daily";
           }
+
           //   else if (path.includes('/blogs/')) {
           //   priority = '0.6' // Higher priority for the slug blogs page
           //   changefreq = 'daily'

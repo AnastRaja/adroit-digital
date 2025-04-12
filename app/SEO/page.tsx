@@ -109,22 +109,22 @@ function index() {
   return (
     <>
       <div>
-        <section className="container grid items-center gap-6  h-[calc(100vh-60px)] grid-cols-12 SEO_section">
-          <div className="col-span-6 flex flex-col items-start gap-2">
+        <section className="container grid items-start lg:items-center gap-4 sm:gap-6 min-h-[calc(100vh-60px)] grid-cols-12 py-6 sm:py-0 SEO_section ">
+          <div className="flex flex-col items-start gap-2 col-span-12 sm:col-span-12 md:col-span-6 lg:col-span-6">
             <h1
               className={cn(
-                "text-8xl md:text-7xl font-extrabold leading-tight tracking-wider",
+                "text-4xl sm:text-3xl md:text-7xl lg:text-8xl font-extrabold leading-tight tracking-wider lg:text-left text-center w-full",
                 myFont.className
               )}
             >
               SEO Service Provider
             </h1>
-            <p className="mt-6 max-w-[700px] text-xl text-zinc-950">
+            <p className="mt-4 sm:mt-6 max-w-[700px] text-base sm:text-lg md:text-xl text-zinc-950 lg:text-left text-center">
               Catch more leads and traffic to your business with our SEO
               tactics. We create strategies that make you rank at the top at the
               google search engine result page.
             </p>
-            <div className="flex gap-4 mt-8">
+            <div className="flex gap-4 mt-6 sm:mt-8 justify-center w-full lg:justify-start">
               <Link
                 href={siteConfig.links.docs}
                 target="_blank"
@@ -149,29 +149,29 @@ function index() {
           </div>
         </section>
         <div className="bg-gray-100 pt-14">
-          <section className="container grid items-center gap-6   grid-cols-12 pb-14 ">
-            <div className="flex flex-col items-start gap-2 col-span-6">
-              <div className="relative ">
+          <section className="container grid items-center gap-4 sm:gap-6 grid-cols-12 pb-8 sm:pb-14 ">
+            <div className="flex flex-col items-start gap-2 col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 order-2 sm:order-1">
+              <div className="relative mx-auto">
                 <Image
                   src={Banner}
                   alt="Banner"
                   // layout="responsive"
                   width={400}
                   height={70}
-                  className="w-2/3 h-auto z-10 relative rounded-lg mx-auto"
+                  className=" h-auto z-10 relative rounded-lg mx-auto display:block"
                 />
               </div>
             </div>
-            <div className=" flex flex-col items-start gap-2 col-span-6">
+            <div className="flex flex-col items-start gap-2 col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 order-1 sm:order-2">
               <h2
                 className={cn(
-                  "text-6xl md:text-6xl font-extrabold leading-tight tracking-wider",
+                  "text-4xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-wider lg:text-left text-center w-full",
                   myFont.className
                 )}
               >
                 What is SEO and How Does it Work for Your Business?
               </h2>
-              <p className="mt-2 max-w-[700px] text-xl text-zinc-950">
+              <p className="mt-2 max-w-[700px] text-xl text-zinc-950 lg:text-left text-center">
                 Search Engine Optimization (SEO) is the practice of enhancing
                 your website&rsquo;s visibility in search engines to improve
                 rankings and drive organic traffic. As a crucial aspect of
@@ -189,7 +189,7 @@ function index() {
             <div>
               <h2
                 className={cn(
-                  "text-6xl md:text-6xl font-extrabold leading-tight tracking-wider text-center ",
+                  "text-4xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-wider lg:text-left text-center w-full",
                   myFont.className
                 )}
               >
@@ -379,17 +379,17 @@ function index() {
         </section>
         <div className="bg-gray-100 pt-14 mt-14">
           <section className="container grid items-center gap-6   grid-cols-12 pb-14 ">
-            <div className=" flex flex-col items-start gap-2 col-span-6">
+            <div className=" flex flex-col items-start gap-2 col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6">
               <h2
                 className={cn(
-                  "text-6xl md:text-6xl font-extrabold leading-tight tracking-wider",
+                  "text-4xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-wider lg:text-left text-center w-full",
                   myFont.className
                 )}
               >
                 Benefits of SEO
               </h2>
             </div>
-            <div className=" items-start gap-2 col-span-6">
+            <div className=" items-start gap-2 col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6">
               <div className="scroll_container no-scrollbar">
                 <div className="sticky-card bg-white p-6 rounded-lg shadow-lg">
                   <div className="w-full flex gap-4 flex-grow">
@@ -511,29 +511,29 @@ function index() {
           </section>
         </div>
         <div className=" pt-14">
-          <section className="container grid items-center gap-6   grid-cols-12 ">
-            <div className="flex flex-col items-start gap-2 col-span-6">
-              <div className="relative ">
+          <section className="container grid items-center gap-4 sm:gap-6 grid-cols-12 pb-8 sm:pb-14">
+            <div className="flex flex-col items-start gap-2 col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 order-2 sm:order-1">
+              <div className="relative mx-auto">
                 <Image
                   src={why}
                   alt="Banner"
                   // layout="responsive"
                   width={400}
                   height={70}
-                  className="w-2/3 h-auto z-10 relative rounded-lg mx-auto"
+                  className=" h-auto z-10 relative rounded-lg mx-auto"
                 />
               </div>
             </div>
-            <div className=" flex flex-col items-start gap-2 col-span-6">
+            <div className=" flex flex-col items-start gap-2 col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 order-1 sm:order-2">
               <h2
                 className={cn(
-                  "text-6xl md:text-6xl font-extrabold leading-tight tracking-wider",
+                  "text-4xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-wider lg:text-left text-center w-full",
                   myFont.className
                 )}
               >
                 Why Choose Us?
               </h2>
-              <p className="mt-2 max-w-[700px] text-xl text-zinc-950">
+              <p className="mt-2 max-w-[700px] text-xl text-zinc-950 lg:text-left text-center w-full">
                 Choose Adroits Digital, the best SEO service provider company,
                 for our proven track record, personalized approach, and
                 commitment to your success. We&apos;re not just a website SEO

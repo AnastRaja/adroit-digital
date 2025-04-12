@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    domains: ["revision.codesupply.co", "res.cloudinary.com"],
+  },
   async rewrites() {
     return [
       {

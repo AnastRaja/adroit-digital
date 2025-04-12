@@ -1,4 +1,5 @@
 import Link from "next/link";
+import {Metadata} from "next";
 
 import {siteConfig} from "@/config/site";
 import {buttonVariants, Button} from "@/components/ui/button";
@@ -10,29 +11,116 @@ import Image from "next/image";
 import CTAimg from "@/asset/getquate.webp";
 import Teamimg from "@/asset/team-img.jpg";
 import {MonitorSmartphone, Bitcoin} from "lucide-react";
+// import BlogCard from "./core/BlogCard";
 const myFont = localFont({src: "../asset/font/Gasket.ttf"});
+import {GetServerSideProps} from "next";
+import BlogCard from "./core/BlogCard"; // Adjust path if needed
+import {fetchBlogs} from "./lib/fetchBlogs"; // Adjust path if needed
+import {Blog} from "./types/blog";
 
-export default function IndexPage() {
+export const metadata: Metadata = {
+  title: {
+    template: "%s | Nexara Innovations",
+    default: "Nexara Innovations - Future of Tech",
+  },
+  description:
+    "Nexara Innovations pioneers blockchain, AI, and cutting-edge software solutions.",
+  applicationName: "Nexara Platform",
+  generator: "Next.js 14",
+  keywords: [
+    "Nexara Innovations",
+    "Blockchain Development",
+    "AI Solutions",
+    "Software Development",
+    "Secure Technologies",
+    "Next.js App",
+  ],
+  authors: [
+    {name: "John Doe", url: "https://adroitsdigital.com/team/john"},
+    {name: "Jane Smith", url: "https://adroitsdigital.com/team/jane"},
+  ],
+  creator: "Nexara Innovations",
+  publisher: "Nexara Media",
+  metadataBase: new URL("https://adroitsdigital.com"),
+  openGraph: {
+    title: "Nexara Innovations - Leading the Future",
+    description:
+      "Explore cutting-edge AI and blockchain solutions from Nexara Innovations.",
+    url: "https://adroitsdigital.com",
+    siteName: "Nexara Innovations",
+    images: [
+      {
+        url: "https://adroitsdigital.com/assets/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Nexara Innovations Logo",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@nexarainnovations",
+    creator: "@johndoe",
+    title: "Nexara Innovations",
+    description: "Innovating with AI and Blockchain to shape the future.",
+    images: ["https://adroitsdigital.com/assets/twitter-card.jpg"],
+  },
+  icons: {
+    icon: "/favicon.ico",
+    shortcut: "/favicon-16x16.png",
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
+
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+  verification: {
+    google: "google-site-verification-code",
+    // bing: 'bing-site-verification-code',
+    yandex: "yandex-site-verification-code",
+  },
+};
+
+export default async function IndexPage() {
+  const blogs: Blog[] = await fetchBlogs();
+
+  // Filter out the current blog and limit to 4 related blogs
+  const relatedBlogs = blogs.slice(0, 4); // Limit to 4 items
+
   return (
     <div>
-      <section className="container grid items-center gap-6  h-[calc(100vh-60px)] grid-cols-12">
-        <div className="col-span-6 flex flex-col items-start gap-2">
+      <section className="container grid items-center gap-4 sm:gap-6 min-h-[calc(100vh-60px)] grid-cols-12 py-6 sm:py-0">
+        {/* Left Column: Text Content */}
+        <div className="flex flex-col items-start gap-2 col-span-12 sm:col-span-12 md:col-span-6 lg:col-span-6">
           <h1
             className={cn(
-              "text-8xl md:text-7xl font-extrabold leading-tight tracking-wider",
+              "text-4xl sm:text-3xl md:text-7xl lg:text-8xl font-extrabold leading-tight tracking-wider lg:text-left text-center",
               myFont.className
             )}
           >
             Digital Transformation <br className="hidden sm:inline" /> Company
           </h1>
-          <p className="mt-6 max-w-[700px] text-xl text-zinc-950">
+          <p className="mt-4 sm:mt-6 max-w-[700px] text-base sm:text-lg md:text-xl text-zinc-950 lg:text-left text-center">
             From Web3 innovation to captivating designs, we create digital
             experiences that matter. Adroits Digital specializes in transforming
             ideas into reality with services in Web3, blockchain, AI, marketing,
             and development that power your business&apos;s journey to success
             and growth.
           </p>
-          <div className="flex gap-4 mt-8">
+          <div className="flex gap-4 mt-6 sm:mt-8 justify-center w-full lg:justify-start">
             <Link
               href={siteConfig.links.docs}
               target="_blank"
@@ -43,7 +131,9 @@ export default function IndexPage() {
             </Link>
           </div>
         </div>
-        <div className="flex flex-col items-start gap-2 col-span-6">
+
+        {/* Right Column: Image */}
+        <div className="flex flex-col items-start gap-2 col-span-12 sm:col-span-12 md:col-span-6 lg:col-span-6">
           <div className="w-full">
             <Image
               src={Banner}
@@ -51,34 +141,37 @@ export default function IndexPage() {
               layout="responsive"
               width={100}
               height={70}
-              className="w-full h-auto"
+              className="w-full h-auto object-cover"
             />
           </div>
         </div>
       </section>
-      <section className="container grid items-center gap-6   grid-cols-12 pb-14">
-        <div className="flex flex-col items-start gap-2 col-span-6">
-          <div className="relative ">
+      <section className="container grid items-center gap-4 sm:gap-6 grid-cols-12 pb-8 sm:pb-14">
+        {/* Left Column: Image */}
+        <div className="flex flex-col items-start gap-2 col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 order-2 sm:order-1">
+          <div className="relative w-full">
             <Image
               src={Team}
-              alt="Banner"
-              // layout="responsive"
+              alt="Team Banner"
+              layout="responsive"
               width={400}
               height={70}
-              className="w-full h-auto z-10 relative rounded-lg"
+              className="w-full h-auto z-10 relative rounded-lg object-cover"
             />
           </div>
         </div>
-        <div className=" flex flex-col items-start gap-2 col-span-6">
+
+        {/* Right Column: Text */}
+        <div className="flex flex-col items-start gap-2 col-span-12 sm:col-span-6 md:col-span-6 lg:col-span-6 order-1 sm:order-2">
           <h2
             className={cn(
-              "text-7xl md:text-7xl font-extrabold leading-tight tracking-wider",
+              "text-4xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-wider lg:text-left text-center w-full",
               myFont.className
             )}
           >
             Who We Are?
           </h2>
-          <p className="mt-2 max-w-[700px] text-xl text-zinc-950">
+          <p className="mt-2 sm:mt-4 max-w-[700px] text-base sm:text-lg md:text-xl text-zinc-950 lg:text-left text-center">
             Welcome to Adroits Digital, your trusted partner in digital
             innovation. We are a team of passionate professionals dedicated to
             delivering cutting-edge solutions that empower businesses to thrive
@@ -89,27 +182,26 @@ export default function IndexPage() {
           </p>
         </div>
       </section>
-
       <section className="container mt-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="p-6">
+          <div className="p-0 lg:p-6">
             <div>
               <h2
                 className={cn(
-                  "text-8xl md:text-7xl font-extrabold leading-tight tracking-wider ",
+                  "text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-wider lg:text-left text-center w-full",
                   myFont.className
                 )}
               >
                 Our Services
               </h2>
-              <p className="mt-2 max-w-[700px] text-xl text-zinc-950 ">
+              <p className="mt-2 max-w-[700px] text-xl text-zinc-950 lg:text-left text-center w-full">
                 At Adroits Digital, we offer a comprehensive range of services
                 to <br className="hidden sm:inline" />
                 meet your unique business needs
               </p>
             </div>
           </div>
-          <div className="group bg-slate-100 hover:bg-primary text-gray-800 p-6 cursor-pointer transition-colors duration-300 ease-in-out rounded-lg hover:rounded-lg">
+          <div className="group bg-slate-100 hover:bg-primary hover:scale-105 text-gray-800 p-6 cursor-pointer transition-all duration-300 ease-in-out rounded-lg hover:rounded-lg">
             <div className="mb-4">
               <MonitorSmartphone
                 size={40}
@@ -126,7 +218,7 @@ export default function IndexPage() {
             </p>
           </div>
           <div
-            className="group bg-slate-100 hover:bg-primary text-gray-800 p-6 cursor-pointer transition-colors duration-300 ease-in-out 
+            className="group bg-slate-100 hover:bg-primary hover:scale-105 text-gray-800 p-6 cursor-pointer transition-all duration-300 ease-in-out 
 rounded-lg hover:rounded-lg"
           >
             <div className="mb-4">
@@ -146,7 +238,7 @@ rounded-lg hover:rounded-lg"
           </div>
 
           <div
-            className="group bg-slate-100 hover:bg-primary text-gray-800 p-6 cursor-pointer transition-colors duration-300 ease-in-out 
+            className="group bg-slate-100 hover:bg-primary hover:scale-105 text-gray-800 p-6 cursor-pointer transition-all duration-300 ease-in-out 
 rounded-lg hover:rounded-lg"
           >
             <div className="mb-4">
@@ -182,7 +274,7 @@ rounded-lg hover:rounded-lg"
           </div>
 
           <div
-            className="group bg-slate-100 hover:bg-primary text-gray-800 p-6 cursor-pointer transition-colors duration-300 ease-in-out 
+            className="group bg-slate-100 hover:bg-primary hover:scale-105 text-gray-800 p-6 cursor-pointer transition-all duration-300 ease-in-out 
 rounded-lg hover:rounded-lg"
           >
             <div className="mb-4">
@@ -215,7 +307,7 @@ rounded-lg hover:rounded-lg"
           </div>
 
           <div
-            className="group bg-slate-100 hover:bg-primary text-gray-800 p-6 cursor-pointer transition-colors duration-300 ease-in-out 
+            className="group bg-slate-100 hover:bg-primary hover:scale-105 text-gray-800 p-6 cursor-pointer transition-all duration-300 ease-in-out 
 rounded-lg hover:rounded-lg"
           >
             <div className="mb-4">
@@ -249,7 +341,7 @@ rounded-lg hover:rounded-lg"
             </p>
           </div>
           <div
-            className="group bg-slate-100 hover:bg-primary text-gray-800 p-6 cursor-pointer transition-colors duration-300 ease-in-out 
+            className="group bg-slate-100 hover:bg-primary hover:scale-105 text-gray-800 p-6 cursor-pointer transition-all duration-300 ease-in-out 
 rounded-lg hover:rounded-lg"
           >
             <div className="mb-4">
@@ -282,7 +374,7 @@ rounded-lg hover:rounded-lg"
             </p>
           </div>
           <div
-            className="group bg-slate-100 hover:bg-primary text-gray-800 p-6 cursor-pointer transition-colors duration-300 ease-in-out 
+            className="group bg-slate-100 hover:bg-primary hover:scale-105 text-gray-800 p-6 cursor-pointer transition-all duration-300 ease-in-out 
 rounded-lg hover:rounded-lg"
           >
             <div className="mb-4">
@@ -314,7 +406,7 @@ rounded-lg hover:rounded-lg"
             </p>
           </div>
           <div
-            className="group bg-slate-100 hover:bg-primary text-gray-800 p-6 cursor-pointer transition-colors duration-300 ease-in-out 
+            className="group bg-slate-100 hover:bg-primary hover:scale-105 text-gray-800 p-6 cursor-pointer transition-all duration-300 ease-in-out 
 rounded-lg hover:rounded-lg"
           >
             <div className="mb-4">
@@ -464,6 +556,45 @@ rounded-lg hover:rounded-lg"
           </div>
         </div>
       </section>
+      <section className="container mt-16">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6">
+          <div className="p-6">
+            <div className="flex items-center justify-center flex-col">
+              <h2
+                className={cn(
+                  "text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-wider ",
+                  myFont.className
+                )}
+              >
+                Our Blog
+              </h2>
+              <p className="mt-2 max-w-[700px] text-xl text-zinc-950 text-center">
+                At Adroits Digital, we offer a comprehensive range of services
+                to <br className="hidden sm:inline" />
+                meet your unique business needs
+              </p>
+            </div>
+          </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-8">
+          {relatedBlogs.length === 0 ? (
+            <p className="text-center col-span-full">No blogs available</p>
+          ) : (
+            relatedBlogs.map((blog) => <BlogCard key={blog._id} blog={blog} />)
+          )}
+        </div>
+      </section>
+      {/* <section>
+        <BlogCard
+          category1="Business"
+          category2="News"
+          image="https://revision.codesupply.co/revision/wp-content/uploads/sites/2/2024/09/demo-image-0042-528x297.webp"
+          author="Ethan Caldwell"
+          date="October 16, 2024"
+          title="How Tech Shapes the Future of Work in 2024"
+          description="In today’s ever-evolving world, storytelling has become a powerful tool for connection. Revision provides a unique platform for individuals to..."
+        />
+      </section> */}
       <section
         className="relative h-[400px] bg-cover bg-center bg-cover bg-no-repeat mt-28"
         style={{
