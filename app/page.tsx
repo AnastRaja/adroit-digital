@@ -88,7 +88,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "google-site-verification-code",
+    google: "google-site-verification-codee",
     // bing: 'bing-site-verification-code',
     yandex: "yandex-site-verification-code",
   },
