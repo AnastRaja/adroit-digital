@@ -128,9 +128,9 @@
 }
 .BG-web3 {
   background-image: url("../asset/bannerWeb3.png");
-  background-size: contain;
+  background-size: 50%;
   background-repeat: no-repeat;
-  background-position: right;
+  background-position: center right !important;
   animation: floating-bg 3s ease-in-out infinite;
 }
 
