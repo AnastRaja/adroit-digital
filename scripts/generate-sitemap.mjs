@@ -1,7 +1,7 @@
 import {writeFileSync} from "fs";
 import {globby} from "globby";
 
-const siteUrl = process.env.NEXT_PUBLIC_API_URL || "https://adroitsdigital.com";
+const siteUrl = "https://adroitsdigital.com";
 const generateUrl = (path) => siteUrl + path;
 const defaultConfig = {
   changefreq: "weekly",
@@ -30,9 +30,8 @@ const rewritesMap = {
 // Fetch blog slugs from API
 async function fetchBlogSlugs() {
   try {
-    const apiUrl =
-      process.env.NEXT_PUBLIC_API_URL || "https://adroitsdigital.com";
-    const res = await fetch(`${apiUrl}/api/blogs/slugs`);
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+    const res = await fetch(`${apiUrl}/api/blogs/blogurls`);
     if (!res.ok) return [];
     return await res.json(); // Should return an array of slugs
   } catch (error) {
