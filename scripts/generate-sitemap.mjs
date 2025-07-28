@@ -1,7 +1,7 @@
 import {writeFileSync} from "fs";
 import {globby} from "globby";
 
-const siteUrl = "https://adroitsdigital.com";
+const siteUrl = process.env.NEXT_PUBLIC_API_URL || "https://adroitsdigital.com";
 const generateUrl = (path) => siteUrl + path;
 const defaultConfig = {
   changefreq: "weekly",
@@ -27,6 +27,20 @@ const rewritesMap = {
   // Add more rewrites as needed
 };
 
+// Fetch blog slugs from API
+async function fetchBlogSlugs() {
+  try {
+    const apiUrl =
+      process.env.NEXT_PUBLIC_API_URL || "https://adroitsdigital.com";
+    const res = await fetch(`${apiUrl}/api/blogs/slugs`);
+    if (!res.ok) return [];
+    return await res.json(); // Should return an array of slugs
+  } catch (error) {
+    console.error("Error fetching blog slugs:", error);
+    return [];
+  }
+}
+
 async function generateSitemap() {
   // Grab Pages from build
   const buildPages = await globby([
@@ -37,6 +51,23 @@ async function generateSitemap() {
     `!${serverPath}/_not-found.html`,
     `!${serverPath}/500.html`,
   ]);
+
+  // Fetch blog slugs
+  const blogSlugs = await fetchBlogSlugs();
+
+  // Generate blog URLs
+  const blogUrls = blogSlugs
+    .map((slug) => {
+      const loc = generateUrl(`/blogs/${slug}`);
+      const lastmod = new Date().toISOString();
+      return `<url>
+        <loc>${loc}</loc>
+        <lastmod>${lastmod}</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+      </url>`;
+    })
+    .join("");
 
   const sitemapStr = `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
@@ -74,6 +105,7 @@ async function generateSitemap() {
         </url>`;
       })
       .join("")}
+    ${blogUrls}
   </urlset>
   `;
 
