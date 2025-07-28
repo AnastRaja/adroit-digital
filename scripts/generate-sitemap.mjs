@@ -19,14 +19,19 @@ const homeConfig = {
 const nextApproach = "app"; // app or pages
 const serverPath = `.next/server/${nextApproach}`;
 
+// Map internal paths to public-facing URLs
+const rewritesMap = {
+  "/about": "/about-us",
+  "/SEO": "/seo-service-provider",
+  "/WEB3": "/web3-marketing-agency",
+  // Add more rewrites as needed
+};
+
 async function generateSitemap() {
-  // Grub Pages from build
+  // Grab Pages from build
   const buildPages = await globby([
-    // grap only /*.html files and nested folders html files
-    // *** Include ***
     `${serverPath}/*.html`,
     `${serverPath}/**/*.html`,
-    // *** Exclude ***
     `!${serverPath}/index.html`,
     `!${serverPath}/404.html`,
     `!${serverPath}/_not-found.html`,
@@ -34,54 +39,43 @@ async function generateSitemap() {
   ]);
 
   const sitemapStr = `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-			<url>
-					<loc>${generateUrl(homeConfig.loc)}</loc>
-					<lastmod>${homeConfig.lastmod}</lastmod>
-					<changefreq>${homeConfig.changefreq}</changefreq>
-					<priority>${homeConfig.priority}</priority>
-			</url>
-			${buildPages
-        .map((page) => {
-          const path = page.replace(serverPath, "").replace(".html", "");
-          const loc = generateUrl(path);
-          const lastmod = new Date().toISOString();
-          let changefreq = defaultConfig.changefreq;
-          let priority = defaultConfig.priority;
-          if (path === "/") {
-            // home page
-            priority = "1.0"; // Highest priority for the homepage
-            changefreq = "monthly";
-          }
-          //    else if (path === "/home") {
-          //   priority = "0.9"; // Higher priority for the index blogs page
-          //   changefreq = "daily";
-          // }
-          else if (path === "/about") {
-            priority = "0.9"; // Higher priority for the index blogs page
-            changefreq = "daily";
-          } else if (path === "/seo-service-provider") {
-            priority = "0.9"; // Higher priority for the index blogs page
-            changefreq = "daily";
-          } else if (path === "/web3-marketing-agency") {
-            priority = "0.9"; // Higher priority for the index blogs page
-            changefreq = "daily";
-          }
-
-          //   else if (path.includes('/blogs/')) {
-          //   priority = '0.6' // Higher priority for the slug blogs page
-          //   changefreq = 'daily'
-          // }
-          return `<url>
-								<loc>${loc}</loc>
-								<lastmod>${lastmod}</lastmod>
-								<changefreq>${changefreq}</changefreq>
-								<priority>${priority}</priority>
-						</url>
-					`;
-        })
-        .join("")}
-	</urlset>
-	`;
+    <url>
+      <loc>${generateUrl(homeConfig.loc)}</loc>
+      <lastmod>${homeConfig.lastmod}</lastmod>
+      <changefreq>${homeConfig.changefreq}</changefreq>
+      <priority>${homeConfig.priority}</priority>
+    </url>
+    ${buildPages
+      .map((page) => {
+        const path = page.replace(serverPath, "").replace(".html", "");
+        const publicPath = rewritesMap[path] || path;
+        const loc = generateUrl(publicPath);
+        const lastmod = new Date().toISOString();
+        let changefreq = defaultConfig.changefreq;
+        let priority = defaultConfig.priority;
+        if (publicPath === "/about-us") {
+          priority = "0.9";
+          changefreq = "daily";
+        } else if (publicPath === "/seo-service-provider") {
+          priority = "0.9";
+          changefreq = "daily";
+        } else if (publicPath === "/web3-marketing-agency") {
+          priority = "0.9";
+          changefreq = "daily";
+        } else if (publicPath === "/") {
+          priority = "1.0";
+          changefreq = "monthly";
+        }
+        return `<url>
+          <loc>${loc}</loc>
+          <lastmod>${lastmod}</lastmod>
+          <changefreq>${changefreq}</changefreq>
+          <priority>${priority}</priority>
+        </url>`;
+      })
+      .join("")}
+  </urlset>
+  `;
 
   writeFileSync(`public/sitemap.xml`, sitemapStr);
 }
