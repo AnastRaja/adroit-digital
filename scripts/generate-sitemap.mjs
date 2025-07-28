@@ -27,19 +27,6 @@ const rewritesMap = {
   // Add more rewrites as needed
 };
 
-// Fetch blog slugs from API
-async function fetchBlogSlugs() {
-  try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
-    const res = await fetch(`${apiUrl}/api/blogs/blogurls`);
-    if (!res.ok) return [];
-    return await res.json(); // Should return an array of slugs
-  } catch (error) {
-    console.error("Error fetching blog slugs:", error);
-    return [];
-  }
-}
-
 async function generateSitemap() {
   // Grab Pages from build
   const buildPages = await globby([
@@ -51,20 +38,25 @@ async function generateSitemap() {
     `!${serverPath}/500.html`,
   ]);
 
-  // Fetch blog slugs
-  const blogSlugs = await fetchBlogSlugs();
+  // Manually add blog slugs here
+  const manualBlogSlugs = [
+    "the-power-of-modern-marketing-strategies-that-drive-results",
+    "how-to-grow-your-business-online",
+    "ai-in-digital-marketing-2025",
+    // Add more slugs as needed
+  ];
 
   // Generate blog URLs
-  const blogUrls = blogSlugs
+  const blogUrls = manualBlogSlugs
     .map((slug) => {
       const loc = generateUrl(`/blogs/${slug}`);
       const lastmod = new Date().toISOString();
       return `<url>
-        <loc>${loc}</loc>
-        <lastmod>${lastmod}</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
-      </url>`;
+      <loc>${loc}</loc>
+      <lastmod>${lastmod}</lastmod>
+      <changefreq>weekly</changefreq>
+      <priority>0.8</priority>
+    </url>`;
     })
     .join("");
 
