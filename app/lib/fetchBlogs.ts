@@ -17,7 +17,9 @@ export async function fetchBlogs(): Promise<Blog[]> {
     const url = `${apiUrl}/api/blogs/`
     console.log("Fetching from URL:", url)
 
-    const res = await fetch(url)
+    const res = await fetch(url, {
+      cache: "no-store",
+    })
 
     if (!res.ok) {
       throw new Error(`Failed to fetch blogs: ${res.status} ${res.statusText}`)

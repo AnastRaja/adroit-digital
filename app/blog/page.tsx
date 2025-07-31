@@ -25,7 +25,7 @@ export const metadata = {
   description: "Latest news and insights from Adroits Digital",
   // Add or override fields here as needed
 };
-
+export const dynamic = "force-dynamic";
 export default async function IndexPage() {
   const blogs: Blog[] = await fetchBlogs();
 
