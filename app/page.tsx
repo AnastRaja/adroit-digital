@@ -20,7 +20,7 @@ import {Blog} from "./types/blog";
 import {defaultMetadata} from "@/config/metadata";
 import DialogCloseButton from "@/components/ContactDialog";
 export const metadata = defaultMetadata;
-
+export const dynamic = "force-dynamic";
 export default async function IndexPage() {
   const blogs: Blog[] = await fetchBlogs();
 
