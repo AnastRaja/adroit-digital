@@ -11,7 +11,7 @@ import {Metadata} from "next";
 import {defaultMetadata} from "@/config/metadata"; // <-- import your shared metadata config
 
 const myFont = localFont({src: "../../../asset/font/Gasket.ttf"});
-export const dynamic = "force-dynamic";
+
 export async function generateMetadata({
   params,
 }: {
