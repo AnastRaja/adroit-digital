@@ -30,7 +30,7 @@ const BlogCard: React.FC<BlogCardProps> = ({blog}) => {
           alt={blog.title}
           width={600}
           height={400}
-          className="w-full h-60 object-cover  rounded-lg"
+          className="w-full h-60 object-cover  rounded-md"
         />
         <div className="p-2">
           <h2

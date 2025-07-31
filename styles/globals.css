@@ -206,3 +206,8 @@
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+.rounded-md,
+.rounded-lg {
+  border-radius: 8px !important;
+}

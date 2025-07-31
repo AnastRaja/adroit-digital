@@ -41,8 +41,8 @@ async function generateSitemap() {
   // Manually add blog slugs here
   const manualBlogSlugs = [
     "the-power-of-modern-marketing-strategies-that-drive-results",
-    "how-to-grow-your-business-online",
-    "ai-in-digital-marketing-2025",
+    // "how-to-grow-your-business-online",
+    // "ai-in-digital-marketing-2025",
     // Add more slugs as needed
   ];
 

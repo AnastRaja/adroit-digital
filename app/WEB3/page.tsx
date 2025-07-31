@@ -24,92 +24,53 @@ import meta from "@/asset/web3/meta.png";
 import content from "@/asset/web3/content.png";
 import mediaout from "@/asset/web3/mediaout.png";
 import statrgecplan from "@/asset/web3/statrgecplan.png";
-import Image from "next/image";
+import DialogCloseButton from "@/components/ContactDialog";
 
+import Image from "next/image";
+import {defaultMetadata} from "@/config/metadata";
 import {MonitorSmartphone, Bitcoin} from "lucide-react";
 const myFont = localFont({src: "../../asset/font/Gasket.ttf"});
-export const metadata: Metadata = {
-  title: {
-    template: "%s | Nexara Innovations",
-    default: "Nexara Innovations - Future of Tech",
-  },
+export const metadata = {
+  ...defaultMetadata,
+  title: "Web3 Marketing Agency | Crypto Marketing Agency",
   description:
-    "Nexara Innovations pioneers blockchain, AI, and cutting-edge software solutions.",
-  applicationName: "Nexara Platform",
-  generator: "Next.js 14",
+    "Adroits Digital is expert web3 and crypto marketing. Specialize in innovative strategies for blockchain, crypto, and NFT projects. Join us.",
   keywords: [
-    "Nexara Innovations",
-    "Blockchain Development",
-    "AI Solutions",
-    "Software Development",
-    "Secure Technologies",
-    "Next.js App",
+    "web3 marketing agency",
+    "crypto marketing agency",
+    "web3 marketing company",
+    "crypto marketing company",
+    "cryptocurrency marketing company",
+    "token marketing company",
+    "crypto token marketing company",
+    "crypto token marketing agency",
+    "Web3 Marketing",
   ],
-  authors: [
-    {name: "John Doe", url: "https://nexara.io/team/john"},
-    {name: "Jane Smith", url: "https://nexara.io/team/jane"},
-  ],
-  creator: "Nexara Innovations",
-  publisher: "Nexara Media",
-  metadataBase: new URL("https://nexara.io"),
   openGraph: {
-    title: "Nexara Innovations - Leading the Future",
+    ...defaultMetadata.openGraph,
+    title: "Crypto Marketing Agency | Web3 Marketing | Adroits Digital",
     description:
-      "Explore cutting-edge AI and blockchain solutions from Nexara Innovations.",
-    url: "https://nexara.io",
-    siteName: "Nexara Innovations",
+      "We propel your crypto token, NFT, into the future with web3 marketing. We assure your web3 and crypto project achieve a maximum height.",
+    url: "https://adroitsdigital.com",
+    siteName: "Adroits Digital - We make your brand shine online",
     images: [
       {
-        url: "https://nexara.io/assets/og-image.jpg",
+        url:
+          "https://res.cloudinary.com/decbm52pl/image/upload/v1712857785/Web3_Marketing_Agency_gcctcz.jpg",
         width: 1200,
         height: 630,
-        alt: "Nexara Innovations Logo",
+        alt: "Web3 Marketing Agency OG Image",
       },
     ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@nexarainnovations",
-    creator: "@johndoe",
-    title: "Nexara Innovations",
-    description: "Innovating with AI and Blockchain to shape the future.",
-    images: ["https://nexara.io/assets/twitter-card.jpg"],
-  },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },
-  manifest: "/site.webmanifest",
-  alternates: {
-    canonical: "https://nexara.io",
-    languages: {
-      "en-US": "https://nexara.io",
-      "fr-FR": "https://nexara.io/fr",
-    },
   },
   robots: {
     index: true,
     follow: true,
-    nocache: false,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: false,
-      "max-snippet": -1,
-      "max-image-preview": "large",
-      "max-video-preview": -1,
-    },
   },
-  // verification: {
-  //   google: 'google-site-verification-code',
-  //   // bing: 'bing-site-verification-code',
-  //   yandex: 'yandex-site-verification-code',
-  // },
+  manifest: "/assets/images/site.webmanifest",
+  themeColor: "#E9204F",
+  applicationName: "Adroits Digital",
 };
-
 function index() {
   return (
     <>
@@ -132,14 +93,7 @@ function index() {
                 business online.
               </p>
               <div className="flex gap-4 mt-6 sm:mt-8 justify-center w-full lg:justify-start">
-                <Link
-                  href={siteConfig.links.docs}
-                  target="_blank"
-                  rel="noreferrer"
-                  className={buttonVariants()}
-                >
-                  Contact Now
-                </Link>
+                <DialogCloseButton buttonText="Contact Us" />
               </div>
             </div>
           </section>
@@ -549,7 +503,14 @@ function index() {
             >
               Get A Free Quote
             </h1>
-            <Button className="bg-white text-black">Contact Us</Button>
+            <Link
+              href="/contact-us"
+              target="_blank"
+              rel="noreferrer"
+              className={buttonVariants()}
+            >
+              Contact Us
+            </Link>
           </div>
         </section>
       </div>

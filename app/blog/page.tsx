@@ -17,81 +17,13 @@ import {GetServerSideProps} from "next";
 import BlogCard from "../core/BlogCard"; // Adjust path if needed
 import {fetchBlogs} from "../lib/fetchBlogs"; // Adjust path if needed
 import {Blog} from "../types/blog";
+import {defaultMetadata} from "@/config/metadata";
 
-export const metadata: Metadata = {
-  title: {
-    template: "%s | Nexara Innovations",
-    default: "Nexara Innovations - Future of Tech",
-  },
-  description:
-    "Nexara Innovations pioneers blockchain, AI, and cutting-edge software solutions.",
-  applicationName: "Nexara Platform",
-  generator: "Next.js 14",
-  keywords: [
-    "Nexara Innovations",
-    "Blockchain Development",
-    "AI Solutions",
-    "Software Development",
-    "Secure Technologies",
-    "Next.js App",
-  ],
-  authors: [
-    {name: "John Doe", url: "https://adroitsdigital.com/team/john"},
-    {name: "Jane Smith", url: "https://adroitsdigital.com/team/jane"},
-  ],
-  creator: "Nexara Innovations",
-  publisher: "Nexara Media",
-  metadataBase: new URL("https://adroitsdigital.com"),
-  openGraph: {
-    title: "Nexara Innovations - Leading the Future",
-    description:
-      "Explore cutting-edge AI and blockchain solutions from Nexara Innovations.",
-    url: "https://adroitsdigital.com",
-    siteName: "Nexara Innovations",
-    images: [
-      {
-        url: "https://adroitsdigital.com/assets/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Nexara Innovations Logo",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    site: "@nexarainnovations",
-    creator: "@johndoe",
-    title: "Nexara Innovations",
-    description: "Innovating with AI and Blockchain to shape the future.",
-    images: ["https://adroitsdigital.com/assets/twitter-card.jpg"],
-  },
-  icons: {
-    icon: "/favicon.ico",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
-  },
-  manifest: "/site.webmanifest",
-
-  robots: {
-    index: true,
-    follow: true,
-    nocache: false,
-    googleBot: {
-      index: true,
-      follow: true,
-      noimageindex: false,
-      "max-snippet": -1,
-      "max-image-preview": "large",
-      "max-video-preview": -1,
-    },
-  },
-  verification: {
-    google: "google-site-verification-code",
-    // bing: 'bing-site-verification-code',
-    yandex: "yandex-site-verification-code",
-  },
+export const metadata = {
+  ...defaultMetadata,
+  title: "Blog | Adroits Digital",
+  description: "Latest news and insights from Adroits Digital",
+  // Add or override fields here as needed
 };
 
 export default async function IndexPage() {
@@ -102,7 +34,20 @@ export default async function IndexPage() {
 
   return (
     <div>
-      <section className="container  mt-0">
+      <div
+        className="w-full flex flex-col items-center justify-center bg-gray-100 "
+        style={{height: "200px"}}
+      >
+        <h1
+          className={cn(
+            "text-4xl sm:text-3xl md:text-7xl lg:text-5xl font-extrabold leading-tight tracking-wider lg:text-left text-center mb-6",
+            myFont.className
+          )}
+        >
+          Let’s Our Trending Blogs
+        </h1>
+      </div>
+      <section className="container  mt-0 pt-8">
         <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-1 gap-6">
           {/* <div className="p-6">
             <div className="flex items-center justify-center flex-col">
@@ -148,7 +93,14 @@ export default async function IndexPage() {
           >
             Get A Free Quote
           </h1>
-          <Button className="bg-white text-black">Contact Us</Button>
+          <Link
+            href="/contact-us"
+            target="_blank"
+            rel="noreferrer"
+            className={buttonVariants()}
+          >
+            Contact Us
+          </Link>
         </div>
       </section>
     </div>

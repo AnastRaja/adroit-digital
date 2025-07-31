@@ -3,6 +3,7 @@ import {CheckCircle} from "lucide-react"; // For the checkmark icon
 import logo from "@/asset/Dark_logo.png";
 import Image from "next/image";
 import Link from "next/link";
+import DialogCloseButton from "@/components/ContactDialog";
 import {
   FaFacebook,
   FaInstagram,
@@ -46,7 +47,8 @@ export default function Footer() {
           </h2>
           {/* Call-to-Actions */}
           <div className="flex justify-center md:justify-end space-x-4">
-            <Button className="bg-primary text-white ">Make an enquiry</Button>
+            <DialogCloseButton buttonText="Make an enquiry" />
+            {/* <Button className="bg-primary text-white ">Make an enquiry</Button> */}
             {/* <Button variant="outline">Watch Demo</Button> */}
           </div>
         </div>

@@ -87,7 +87,7 @@ export function NavigationMenuDemo() {
           <Link href="/blog">Our Blog</Link>
         </NavigationMenuItem>
         <NavigationMenuItem>
-          <Link href="/blog">Contact us</Link>
+          <Link href="/contact-us">Contact us</Link>
         </NavigationMenuItem>
       </NavigationMenuList>
     </NavigationMenu>

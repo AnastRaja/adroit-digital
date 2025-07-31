@@ -7,15 +7,63 @@ import {cn} from "@/lib/utils";
 import ContactForm from "../../../components/BlogForm";
 import BlogCard from "../../core/BlogCard";
 import {Blog} from "../../types/blog";
+import {Metadata} from "next";
+import {defaultMetadata} from "@/config/metadata"; // <-- import your shared metadata config
 
 const myFont = localFont({src: "../../../asset/font/Gasket.ttf"});
+
+export async function generateMetadata({
+  params,
+}: {
+  params: {slug: string};
+}): Promise<Metadata> {
+  // Fetch blogs and find the one matching the slug
+  const {slug} = params;
+  const blogs = await fetchBlogs();
+  const blog = blogs.find((b) => b.slug === slug);
+
+  if (!blog) {
+    return {
+      ...defaultMetadata,
+      title: "Blog Not Found | Nexara Innovations",
+      description: "The blog post you are looking for does not exist.",
+    };
+  }
+
+  // Return dynamic metadata using blog info, falling back to shared config
+  return {
+    ...defaultMetadata,
+    title: `${blog.title} | Nexara Innovations`,
+    description: blog.description,
+    openGraph: {
+      ...defaultMetadata.openGraph,
+      title: blog.title,
+      description: blog.description,
+      url: `https://adroitsdigital.com/blog/${blog.slug}`,
+      images: [
+        {
+          url: blog.imageUrl,
+          width: 1200,
+          height: 630,
+          alt: blog.title,
+        },
+      ],
+    },
+    twitter: {
+      ...defaultMetadata.twitter,
+      title: blog.title,
+      description: blog.description,
+      images: [blog.imageUrl],
+    },
+  };
+}
 
 export default async function BlogDetailPage({
   params,
 }: {
-  params: Promise<{slug: string}>; // Type params as a Promise
+  params: {slug: string};
 }) {
-  const {slug} = await params; // Await params to get the slug
+  const {slug} = params;
   const blogs = await fetchBlogs();
   const blog = blogs.find((b) => b.slug === slug);
 
