@@ -26,8 +26,7 @@ export const metadata = {
     index: true,
     follow: true,
   },
-  manifest: "/assets/images/site.webmanifest",
-  themeColor: "#E9204F",
+
   applicationName: "Adroits Digital",
 };
 

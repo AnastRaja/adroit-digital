@@ -62,8 +62,6 @@ export const metadata = {
     follow: true,
   },
 
-  manifest: "/assets/images/site.webmanifest",
-  themeColor: "#E9204F",
   applicationName: "Adroits Digital",
 };
 function index() {

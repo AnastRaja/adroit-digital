@@ -65,11 +65,11 @@ export const defaultMetadata: Metadata = {
       },
     ],
   },
-  manifest: "/assets/images/site.webmanifest",
+
   verification: {
     google: "_hLxDCoNPqB2atuG2lyCKX6yriPVSMWkL4kM6JHml5Q",
   },
-  themeColor: "#E9204F",
+
   applicationName: "Adroits Digital",
   // Additional meta tags (not directly supported by Next.js Metadata) can be handled via <Head> if needed
 }
