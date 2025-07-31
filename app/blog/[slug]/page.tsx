@@ -1,5 +1,6 @@
 import {fetchBlogs} from "../../lib/fetchBlogs";
 import Image from "next/image";
+import {Metadata} from "next";
 import {notFound} from "next/navigation";
 import Link from "next/link";
 import localFont from "next/font/local";
@@ -7,39 +8,53 @@ import {cn} from "@/lib/utils";
 import ContactForm from "../../../components/BlogForm";
 import BlogCard from "../../core/BlogCard";
 import {Blog} from "../../types/blog";
-import {Metadata} from "next";
-import {defaultMetadata} from "@/config/metadata"; // <-- import your shared metadata config
 
 const myFont = localFont({src: "../../../asset/font/Gasket.ttf"});
 
+// Dynamic metadata generation
 export async function generateMetadata({
   params,
 }: {
-  params: {slug: string};
+  params: Promise<{slug: string}>;
 }): Promise<Metadata> {
-  // Fetch blogs and find the one matching the slug
-  const {slug} = params;
+  const {slug} = await params; // Await params to get the slug
   const blogs = await fetchBlogs();
   const blog = blogs.find((b) => b.slug === slug);
 
   if (!blog) {
     return {
-      ...defaultMetadata,
       title: "Blog Not Found | Nexara Innovations",
-      description: "The blog post you are looking for does not exist.",
-    };
+      description: "The requested blog post could not be found.",
+    }; // Minimal fallback metadata if blog is not found
   }
 
-  // Return dynamic metadata using blog info, falling back to shared config
   return {
-    ...defaultMetadata,
     title: `${blog.title} | Nexara Innovations`,
     description: blog.description,
+    keywords: [
+      "Nexara Innovations",
+      "Blockchain Development",
+      "AI Solutions",
+      "Software Development",
+      "Secure Technologies",
+      "Next.js App",
+      blog.category,
+      ...(blog.tags || []), // Add blog-specific tags if available
+    ],
+    applicationName: "Nexara Platform",
+    generator: "Next.js 14",
+    authors: [
+      {name: "John Doe", url: "https://nexara.io/team/john"},
+      {name: "Jane Smith", url: "https://nexara.io/team/jane"},
+    ],
+    creator: "Nexara Innovations",
+    publisher: "Nexara Media",
+    metadataBase: new URL("https://nexara.io"),
     openGraph: {
-      ...defaultMetadata.openGraph,
       title: blog.title,
       description: blog.description,
-      url: `https://adroitsdigital.com/blog/${blog.slug}`,
+      url: `https://nexara.io/blog/${blog.slug}`,
+      siteName: "Nexara Innovations",
       images: [
         {
           url: blog.imageUrl,
@@ -48,12 +63,32 @@ export async function generateMetadata({
           alt: blog.title,
         },
       ],
+      locale: "en_US",
+      type: "article",
     },
     twitter: {
-      ...defaultMetadata.twitter,
+      card: "summary_large_image",
+      site: "@nexarainnovations",
+      creator: "@johndoe",
       title: blog.title,
       description: blog.description,
       images: [blog.imageUrl],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      nocache: false,
+      googleBot: {
+        index: true,
+        follow: true,
+        noimageindex: false,
+        "max-snippet": -1,
+        "max-image-preview": "large",
+        "max-video-preview": -1,
+      },
+    },
+    alternates: {
+      canonical: `https://nexara.io/blog/${blog.slug}`,
     },
   };
 }
@@ -61,9 +96,9 @@ export async function generateMetadata({
 export default async function BlogDetailPage({
   params,
 }: {
-  params: {slug: string};
+  params: Promise<{slug: string}>;
 }) {
-  const {slug} = params;
+  const {slug} = await params; // Await params to get the slug
   const blogs = await fetchBlogs();
   const blog = blogs.find((b) => b.slug === slug);
 
@@ -135,7 +170,7 @@ export default async function BlogDetailPage({
             />
           )}
         </div>
-        <div className="lg:col-span-3 md:col-span-1  text-white ">
+        <div className="lg:col-span-3 md:col-span-1 text-white">
           <ContactForm />
         </div>
       </div>
