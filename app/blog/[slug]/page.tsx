@@ -23,38 +23,32 @@ export async function generateMetadata({
 
   if (!blog) {
     return {
-      title: "Blog Not Found | Nexara Innovations",
+      title: "Blog Not Found | Adroits Digital",
       description: "The requested blog post could not be found.",
     }; // Minimal fallback metadata if blog is not found
   }
 
   return {
-    title: `${blog.title} | Nexara Innovations`,
+    title: `${blog.title} | Adroits Digital`,
     description: blog.description,
     keywords: [
-      "Nexara Innovations",
-      "Blockchain Development",
-      "AI Solutions",
-      "Software Development",
-      "Secure Technologies",
-      "Next.js App",
+      "Digital marketing company",
+      "top digital marketing company",
+      "best digital marketing company",
+      "digital marketing services",
+      "web3 marketing",
+      "web3 marketing service",
       blog.category,
-      ...(blog.tags || []), // Add blog-specific tags if available
     ],
-    applicationName: "Nexara Platform",
-    generator: "Next.js 14",
-    authors: [
-      {name: "John Doe", url: "https://nexara.io/team/john"},
-      {name: "Jane Smith", url: "https://nexara.io/team/jane"},
-    ],
-    creator: "Nexara Innovations",
-    publisher: "Nexara Media",
-    metadataBase: new URL("https://nexara.io"),
+
+    creator: "Adroits Digital",
+
+    metadataBase: new URL("https://adroitsdigital.com"),
     openGraph: {
       title: blog.title,
       description: blog.description,
-      url: `https://nexara.io/blog/${blog.slug}`,
-      siteName: "Nexara Innovations",
+      url: `https://adroitsdigital.com/blog/${blog.slug}`,
+      siteName: "Adroits Digital",
       images: [
         {
           url: blog.imageUrl,
@@ -68,7 +62,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      site: "@nexarainnovations",
+      site: "@AdroitsDigital",
       creator: "@johndoe",
       title: blog.title,
       description: blog.description,
@@ -88,7 +82,7 @@ export async function generateMetadata({
       },
     },
     alternates: {
-      canonical: `https://nexara.io/blog/${blog.slug}`,
+      canonical: `https://adroitsdigital.com/blog/${blog.slug}`,
     },
   };
 }
